@@ -1,3 +1,4 @@
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import React,{ Component }  from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -5,7 +6,7 @@ import KeysComponent from './component/KeysComponent'
 import OutputComponent from './component/OutputComponent'
 
 class App extends Component{
-	constructor(){
+    constructor(){
         super();
 
         this.state = {
@@ -48,28 +49,35 @@ class App extends Component{
     };
 
     reset = () => {
-    	this.setState({
-    		result:""
-    	})
+        this.setState({
+            result:""
+        })
     }
 
     backspace = () => {
-    	this.setState({
-    		result:this.state.result.slice(0,this.state.result.length-1)
-    	})
+        this.setState({
+            result:this.state.result.slice(0,this.state.result.length-1)
+        })
     }
 
     render(){
-    	return (
-	    <div className="App">
-	      	<header className="App-header">
-	      	<h2>Calculator</h2>
-	      	<OutputComponent result={this.state.result}/>
-	        <KeysComponent onClick={this.onClick}/>
-	      	</header>
-	      
-	    </div>
-  		);
+        return (
+        <div className="App">
+            <header className="App-header">
+            <div className="col-md-4"></div>
+            <div className="col-md-3">
+                <div className="justify-content-center">
+                    <h2 className="text-center">Calculator</h2>
+                    <div className="row" id="outputScreen">
+                       <OutputComponent result={this.state.result}/>
+                    </div>
+                      <KeysComponent onClick={this.onClick}/>
+                </div>
+            </div>
+            <div className="col-md-5"></div>
+            </header>         
+        </div>
+        );
     }
 
 }

@@ -7,6 +7,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.row{
+	height: 100%;
+	width: 100%;
+	line-height: 50px;
+}
+.operator{
+	background-color: #ff0000;
+	font-size: 40px;
+	font-style: bold;
+	font-weight: 400;
+	color: white;
+}
+.outputScreen
+{
+	color: white;
+	height: 100px;
+	width: 100%;
+	line-height: 100px;
+	background-color: black;
+	font-size: 40px;
+	font-weight: 400;
+	font-style: bold;
+	text-align: right;
+	margin: 0;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
