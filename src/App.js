@@ -10,7 +10,8 @@ class App extends Component{
         super();
 
         this.state = {
-            result: ""
+            result: "",
+            history:""
         }
     }
 
@@ -38,7 +39,8 @@ class App extends Component{
     calculate = (button) => {
         try {
             this.setState({
-                result: this.state.result+button+(eval(this.state.result) || "" ) + ""
+                result: this.state.result+button+(eval(this.state.result) || "" ) + "",
+                history:this.state.history+"  "+this.state.result+button+(eval(this.state.result) || "" ) + ""
             })
         } catch (e) {
             this.setState({
@@ -72,6 +74,8 @@ class App extends Component{
                        <OutputComponent result={this.state.result}/>
                     </div>
                       <KeysComponent onClick={this.onClick}/>
+                      <div><strong>History</strong></div>
+                      <div>{this.state.history}</div>
                 </div>
             </div>
             <div className="col-md-5"></div>
