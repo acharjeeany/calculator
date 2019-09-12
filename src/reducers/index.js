@@ -1,8 +1,8 @@
 // index.js
 
 import { combineReducers } from 'redux';
-import contacts from './contactReducer';
+import result from './contactReducer';
 
 export default combineReducers({
-    contacts: contacts
+    result: result
 });

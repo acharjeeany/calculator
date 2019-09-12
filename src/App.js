@@ -1,9 +1,12 @@
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import React,{ Component }  from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
 import KeysComponent from './component/KeysComponent'
 import OutputComponent from './component/OutputComponent'
+import * as contactAction from './actions/contactAction';
+
 
 class App extends Component{
     constructor(){
@@ -18,14 +21,15 @@ class App extends Component{
 
     onClick = button => {
 
-        if(button == "="){
+        if(button === "="){
+            console.log("trigger-1");
             this.calculate(button)
         }
 
-        else if(button == "reset"){
+        else if(button === "reset"){
             this.reset()
         }
-        else if(button == "backspace"){
+        else if(button === "backspace"){
             this.backspace()
         }
 
@@ -37,7 +41,13 @@ class App extends Component{
     };
 
     calculate = (button) => {
-        try {
+        console.log("trigger-2");
+        let result = this.state.result;
+        this.setState({
+          result: this.props.getResult(result)
+        });
+        //this.props.getResult(results);
+        /*try {
             this.setState({
                 result: this.state.result+button+(eval(this.state.result) || "" ) + "",
                 history:this.state.history+"  "+this.state.result+button+(eval(this.state.result) || "" ) + ""
@@ -47,7 +57,7 @@ class App extends Component{
                 result: "Math error"
             })
 
-        }
+        }*/
     };
 
     reset = () => {
@@ -71,7 +81,7 @@ class App extends Component{
                 <div className="justify-content-center">
                     <h2 className="text-center">Calculator</h2>
                     <div className="row" id="outputScreen">
-                       <OutputComponent result={this.state.result}/>
+                        <OutputComponent result={ this.state.result+"="+this.props.result } />
                     </div>
                       <KeysComponent onClick={this.onClick}/>
                       <div><strong>History</strong></div>
@@ -86,4 +96,20 @@ class App extends Component{
 
 }
 
-export default App;
+
+const mapStateToProps = (state, ownProps) => {
+  console.log("trigger-9");
+  return {
+    result: state.result
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  console.log("trigger-10");
+  return {
+    getResult: result => dispatch(contactAction.getResult(result)),
+    //deleteContact: index =>dispatch(contactAction.deleteContact(index))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

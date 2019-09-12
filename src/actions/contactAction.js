@@ -2,7 +2,7 @@
 
 import * as actionTypes from './actionTypes';
 
-export const createContact = (contact) => {
+/*export const createContact = (contact) => {
 	console.log("trigger ==2****************"+contact);
 	console.log(contact);
     return {
@@ -16,13 +16,16 @@ export const deleteContact = (id) => {
         type: actionTypes.REMOVE_CONTACT,
         id: id
     }
-}
+}*/
 
 export const getResult = (result) => {
+  console.log("trigger-3");
+  console.log(result)
     return {
         type: actionTypes.GET_RESULT,
         result: result
-    }
-}
+        }
+
+      }
 
 

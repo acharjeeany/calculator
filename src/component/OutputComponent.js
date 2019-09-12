@@ -8,8 +8,7 @@ class OutputComponent extends Component{
         return (
             
             <div><p>{result}</p></div>
-    )
-        ;
+    );
     }
 }
 
