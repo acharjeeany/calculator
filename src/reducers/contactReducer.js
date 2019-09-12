@@ -1,6 +1,10 @@
 import * as actionTypes from '../actions/actionTypes';
 
-export default (state=[], action) => {
+
+
+export default (state='', action) => {
+    console.log("Before return");
+    console.log(state.result)
     /*switch (action.type){
       case actionTypes.CREATE_NEW_CONTACT:
         console.log("trigger ==4****************");
@@ -19,7 +23,7 @@ export default (state=[], action) => {
         
         //console.log(eval(action.result));
         //result: eval(action.result)
-       return action.result=eval(action.result);
+       return state+eval(action.result);
       default:
             return state;
     }

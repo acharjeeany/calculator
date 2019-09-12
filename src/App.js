@@ -42,10 +42,12 @@ class App extends Component{
 
     calculate = (button) => {
         console.log("trigger-2");
+        console.log(this.state.result)
         let result = this.state.result;
-        this.setState({
-          result: this.props.getResult(result)
-        });
+        /*this.setState({
+          result: result
+        });*/
+        this.props.getResult(result)
         //this.props.getResult(results);
         /*try {
             this.setState({
@@ -81,7 +83,7 @@ class App extends Component{
                 <div className="justify-content-center">
                     <h2 className="text-center">Calculator</h2>
                     <div className="row" id="outputScreen">
-                        <OutputComponent result={ this.state.result+"="+this.props.result } />
+                        <OutputComponent result={ this.state.result } />
                     </div>
                       <KeysComponent onClick={this.onClick}/>
                       <div><strong>History</strong></div>
@@ -97,12 +99,10 @@ class App extends Component{
 }
 
 
-const mapStateToProps = (state, ownProps) => {
-  console.log("trigger-9");
-  return {
-    result: state.result
-  }
-};
+const mapStateToProps =state =>  ({
+  
+  ...state
+});
 
 const mapDispatchToProps = (dispatch) => {
   console.log("trigger-10");
@@ -111,5 +111,6 @@ const mapDispatchToProps = (dispatch) => {
     //deleteContact: index =>dispatch(contactAction.deleteContact(index))
   }
 };
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
