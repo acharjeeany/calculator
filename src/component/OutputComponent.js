@@ -4,10 +4,10 @@ class OutputComponent extends Component{
 
 	
 	render() {
-        let {result} = this.props;
+        let {result} = this.props.result;
         return (
             
-            <div><p>{result}</p></div>
+            <div><p className="outputScreen">{result}</p></div>
     );
     }
 }

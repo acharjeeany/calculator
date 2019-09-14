@@ -1,4 +1,5 @@
 export const GET_RESULT = 'GET_RESULT';
-//export const CREATE_NEW_CONTACT = 'CREATE_NEW_CONTACT';
-//export const REMOVE_CONTACT = 'REMOVE_CONTACT';
-console.log("trigger ==3****************");
+export const GET_HISTORY = 'GET_HISTORY';
+export const RESET_ALL = 'RESET_ALL';
+export const SHOW_OTHERS = 'SHOW_OTHERS';
+//console.log("trigger ==3****************");

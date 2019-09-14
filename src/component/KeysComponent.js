@@ -1,42 +1,164 @@
 import React,{ Component }  from 'react';
 
 class KeysComponent extends Component{
+	constructor(){
+		super();
+		this.state={
+			/* Array assigning Started*/
+			keyValues:[
+			/*First Array*/
+				{
+					id:1,
+					keys:[
+						{
+							id:1,
+							name:'reset',
+							value:'clear',
+							size:'col-md-4'
+						},
+						{
+							id:2,
+							name:'h',
+							value:'History',
+							size:'col-md-8 history'
+						}
+					]
+				},
+			/*Second Array*/
+				{
+					id:2,
+					keys:[
+						{
+							id:1,
+							name:'7',
+							value:'7',
+							size:'col-md-3'
+						},
+						{
+							id:2,
+							name:'8',
+							value:'8',
+							size:'col-md-3'
+						},
+						{
+							id:3,
+							name:'9',
+							value:'9',
+							size:'col-md-3'
+						},
+						{
+							id:4,
+							name:'/',
+							value:'/',
+							size:'col-md-3 operator'
+						}
+					]
+				},
+			/*Third Array*/
+				{
+					id:3,
+					keys:[
+						{
+							id:1,
+							name:'4',
+							value:'4',
+							size:'col-md-3'
+						},
+						{
+							id:2,
+							name:'5',
+							value:'5',
+							size:'col-md-3'
+						},
+						{
+							id:3,
+							name:'6',
+							value:'6',
+							size:'col-md-3'
+						},
+						{
+							id:4,
+							name:'*',
+							value:'*',
+							size:'col-md-3 operator'
+						}
+					]
+				},
+			/*Fourth Array*/
+				{
+					id:4,
+					keys:[
+						{
+							id:1,
+							name:'1',
+							value:'1',
+							size:'col-md-3'
+						},
+						{
+							id:2,
+							name:'2',
+							value:'2',
+							size:'col-md-3'
+						},
+						{
+							id:3,
+							name:'3',
+							value:'3',
+							size:'col-md-3'
+						},
+						{
+							id:4,
+							name:'-',
+							value:'-',
+							size:'col-md-3 operator'
+						}
+					]
+				},
+			/*Fifth Array*/
+				{
+					id:2,
+					keys:[
+						{
+							id:1,
+							name:'0',
+							value:'0',
+							size:'col-md-3'
+						},
+						{
+							id:2,
+							name:'=',
+							value:'=',
+							size:'col-md-6 operator'
+						},
+						{
+							id:3,
+							name:'+',
+							value:'+',
+							size:'col-md-3 operator'
+						}
+					]
+				}
+				]
+			/* Array assigning Ended*/	
+		};
+	}
 	render(){
+		var {keyValues}=this.state;
 		return(
 			<div>
-			<div className="row">
-				<button name="reset" className="col-md-9"  onClick={event => this.props.onClick(event.target.name)}>Clear</button>
-				<button name="/" className="operator col-md-3"  onClick={event => this.props.onClick(event.target.name)}>/</button>
+				{keyValues.map(el=>
+					<div className="row">
+					{el.keys.map(ev=>
+						<button key={ev.id.toString()} className={ev.size} name={ev.name} onClick={event => this.props.handleClick(event.target.name)}>{ev.value}</button>
+						)}
+
+					</div>
+				)}
 			</div>
-			<div className="row">
-				<button className="col-md-3" name="7" onClick={event => this.props.onClick(event.target.name)}>7</button>
-				<button className="col-md-3" name="8" onClick={event => this.props.onClick(event.target.name)}>8</button>
-				<button className="col-md-3" name="9" onClick={event => this.props.onClick(event.target.name)}>9</button>
-				<button className="col-md-3 operator" name="backspace" onClick={event => this.props.onClick(event.target.name)}>\</button>
-			</div>
-			<div className="row">
-				<button className="col-md-3" name="4" onClick={event => this.props.onClick(event.target.name)}>4</button>
-				<button className="col-md-3" name="5" onClick={event => this.props.onClick(event.target.name)}>5</button>
-				<button className="col-md-3" name="6" onClick={event => this.props.onClick(event.target.name)}>6</button>
-				<button className="col-md-3 operator" name="*" onClick={event => this.props.onClick(event.target.name)}>*</button>
-			</div>
-			<div className="row">
-				<button className="col-md-3" name="3" onClick={event => this.props.onClick(event.target.name)}>3</button>
-				<button className="col-md-3" name="2" onClick={event => this.props.onClick(event.target.name)}>2</button>
-				<button className="col-md-3" name="1" onClick={event => this.props.onClick(event.target.name)}>1</button>
-				<button className="col-md-3 operator" name="-" onClick={event => this.props.onClick(event.target.name)}>-</button>
-			</div>
-			<div className="row">
-				<button className="col-md-3" name="0" onClick={event => this.props.onClick(event.target.name)}>0</button>
-				<button className="col-md-6 operator" name="=" onClick={event => this.props.onClick(event.target.name)}>=</button>
-				<button className="col-md-3 operator" name="+" onClick={event => this.props.onClick(event.target.name)}>+</button>
-			</div>
-			</div>
-			);
+		);
 	}
 
+
 }
-
-
 
 export default KeysComponent;
